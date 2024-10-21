@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Добро пожаловать на наш сайт!</h1>
+
+    {% if current_user.is_authenticated %}
+        <p>Привет, {{ current_user.username }}!</p>
+        <a href="{{ url_for('main.account') }}">Перейти к профилю</a> |
+        <a href="{{ url_for('main.logout') }}">Выйти</a>
+    {% else %}
+        <p>Вы не авторизованы.</p>
+        <a href="{{ url_for('main.login') }}">Войти</a> |
+        <a href="{{ url_for('main.register') }}">Зарегистрироваться</a>
+    {% endif %}
+</body>
+</html>
