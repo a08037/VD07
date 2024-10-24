@@ -13,7 +13,7 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
 
-        # Проверка и обновление пароля, если он был изменён
+        # Проверка и обновление пароля
         if form.password.data:
             hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
             current_user.password = hashed_password
